@@ -22,12 +22,13 @@ type BTNodeCfg struct {
 func (this *BTNodeCfg) GetProperty(name string) float64 {
 	v, ok := this.Properties[name]
 	if !ok {
-		fmt.Println("GetProperty err ,no vlaue:", name)
+		panic("GetProperty err ,no vlaue:" + name)
 		return 0
 	}
 	f64, fok := v.(float64)
 	if !fok {
 		fmt.Println("GetProperty err ,format not fload64:", name, v)
+		panic("GetProperty err ,format not fload64:" + name)
 		return 0
 	}
 	return f64
@@ -42,6 +43,22 @@ func (this *BTNodeCfg) GetPropertyAsInt64(name string) int64 {
 	v := this.GetProperty(name)
 	i := int64(v)
 	return i
+}
+
+func (this *BTNodeCfg) GetPropertyAsString(name string) string {
+	v, ok := this.Properties[name]
+	if !ok {
+		panic("GetProperty err ,no vlaue:" + name)
+		return ""
+	}
+
+	str, fok := v.(string)
+	if !fok {
+		fmt.Println("GetProperty err ,format not string:", name, v)
+		panic("GetProperty err ,format not string:" + name)
+		return ""
+	}
+	return str
 }
 
 //树json类型

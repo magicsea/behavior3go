@@ -20,10 +20,6 @@ type Wait struct {
 	endTime int64
 }
 
-func (this *Wait) ctor() {
-	this.SetName("Wait")
-}
-
 /**
  * Initialization method.
  *
@@ -32,12 +28,12 @@ func (this *Wait) ctor() {
  * - **milliseconds** (*Integer*) Maximum time, in milliseconds, a child
  *                                can execute.
  *
- * @method initialize
+ * @method Initialize
  * @param {Object} settings Object with parameters.
- * @constructor
+ * @construCtor
 **/
-func (this *Wait) initialize(setting *BTNodeCfg) {
-	this.Action.initialize(setting)
+func (this *Wait) Initialize(setting *BTNodeCfg) {
+	this.Action.Initialize(setting)
 	this.endTime = setting.GetPropertyAsInt64("milliseconds")
 }
 
@@ -46,7 +42,7 @@ func (this *Wait) initialize(setting *BTNodeCfg) {
  * @method open
  * @param {Tick} tick A tick instance.
 **/
-func (this *Wait) open(tick *Tick) {
+func (this *Wait) OnOpen(tick *Tick) {
 	var startTime int64 = time.Now().UnixNano() / 1000000
 	tick.Blackboard.Set("startTime", startTime, tick.GetTree().GetID(), this.GetID())
 }
@@ -57,7 +53,7 @@ func (this *Wait) open(tick *Tick) {
  * @param {Tick} tick A tick instance.
  * @return {Constant} A state constant.
 **/
-func (this *Wait) tick(tick *Tick) b3.Status {
+func (this *Wait) OnTick(tick *Tick) b3.Status {
 	var currTime int64 = time.Now().UnixNano() / 1000000
 	var startTime = tick.Blackboard.GetInt64("startTime", tick.GetTree().GetID(), this.GetID())
 

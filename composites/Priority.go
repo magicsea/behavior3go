@@ -9,17 +9,13 @@ type Priority struct {
 	Composite
 }
 
-func (this *Priority) ctor() {
-	this.SetName("Priority")
-}
-
 /**
  * Tick method.
  * @method tick
  * @param {b3.Tick} tick A tick instance.
  * @return {Constant} A state constant.
 **/
-func (this *Priority) tick(tick *Tick) b3.Status {
+func (this *Priority) OnTick(tick *Tick) b3.Status {
 	for i := 0; i < this.GetChildCount(); i++ {
 		var status = this.GetChild(i).Execute(tick)
 		if status != b3.FAILURE {

@@ -9,16 +9,12 @@ type MemSequence struct {
 	Composite
 }
 
-func (this *MemSequence) ctor() {
-	this.SetName("MemSequence")
-}
-
 /**
  * Open method.
  * @method open
  * @param {b3.Tick} tick A tick instance.
 **/
-func (this *MemSequence) open(tick *Tick) {
+func (this *MemSequence) OnOpen(tick *Tick) {
 	tick.Blackboard.Set("runningChild", 0, tick.GetTree().GetID(), this.GetID())
 }
 
@@ -28,7 +24,7 @@ func (this *MemSequence) open(tick *Tick) {
  * @param {b3.Tick} tick A tick instance.
  * @return {Constant} A state constant.
 **/
-func (this *MemSequence) tick(tick *Tick) b3.Status {
+func (this *MemSequence) OnTick(tick *Tick) b3.Status {
 	var child = tick.Blackboard.GetInt("runningChild", tick.GetTree().GetID(), this.GetID())
 	for i := child; i < this.GetChildCount(); i++ {
 		var status = this.GetChild(i).Execute(tick)

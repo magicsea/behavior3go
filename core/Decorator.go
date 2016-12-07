@@ -13,22 +13,24 @@ type IDecorator interface {
 
 type Decorator struct {
 	BaseNode
+	BaseWorker
 	child IBaseNode
 }
 
-func (this *Decorator) ctor() {
+func (this *Decorator) Ctor() {
+
 	this.category = b3.DECORATOR
 }
 
 /**
  * Initialization method.
  *
- * @method initialize
- * @constructor
+ * @method Initialize
+ * @construCtor
 **/
-func (this *Decorator) initialize(params *BTNodeCfg) {
-	this.BaseNode.initialize(params)
-
+func (this *Decorator) Initialize(params *BTNodeCfg) {
+	this.BaseNode.Initialize(params)
+	//this.BaseNode.IBaseWorker = this
 }
 
 //GetChild

@@ -17,17 +17,13 @@ type Inverter struct {
 	Decorator
 }
 
-func (this *Inverter) ctor() {
-	this.SetName("Inverter")
-}
-
 /**
  * Tick method.
  * @method tick
  * @param {b3.Tick} tick A tick instance.
  * @return {Constant} A state constant.
 **/
-func (this *Inverter) tick(tick *Tick) b3.Status {
+func (this *Inverter) OnTick(tick *Tick) b3.Status {
 	if this.GetChild() == nil {
 		return b3.ERROR
 	}

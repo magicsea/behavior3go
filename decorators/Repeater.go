@@ -1,6 +1,8 @@
 package decorators
 
 import (
+	"fmt"
+
 	b3 "github.com/magicsea/behavior3go"
 	. "github.com/magicsea/behavior3go/config"
 	. "github.com/magicsea/behavior3go/core"
@@ -20,11 +22,6 @@ type Repeater struct {
 	maxLoop int
 }
 
-func (this *Repeater) ctor() {
-	this.SetName("Repeater")
-	this.SetTitle("Repeat <maxLoop>x")
-}
-
 /**
  * Initialization method.
  *
@@ -33,11 +30,12 @@ func (this *Repeater) ctor() {
  * - **milliseconds** (*Integer*) Maximum time, in milliseconds, a child
  *                                can execute.
  *
- * @method initialize
+ * @method Initialize
  * @param {Object} settings Object with parameters.
- * @constructor
+ * @construCtor
 **/
-func (this *Repeater) initialize(setting *BTNodeCfg) {
+func (this *Repeater) Initialize(setting *BTNodeCfg) {
+	this.Decorator.Initialize(setting)
 	this.maxLoop = setting.GetPropertyAsInt("maxLoop")
 	if this.maxLoop < 1 {
 		panic("maxLoop parameter in MaxTime decorator is an obligatory parameter")
@@ -49,7 +47,7 @@ func (this *Repeater) initialize(setting *BTNodeCfg) {
  * @method open
  * @param {Tick} tick A tick instance.
 **/
-func (this *Repeater) open(tick *Tick) {
+func (this *Repeater) OnOpen(tick *Tick) {
 	tick.Blackboard.Set("i", 0, tick.GetTree().GetID(), this.GetID())
 }
 
@@ -59,7 +57,8 @@ func (this *Repeater) open(tick *Tick) {
  * @param {b3.Tick} tick A tick instance.
  * @return {Constant} A state constant.
 **/
-func (this *Repeater) tick(tick *Tick) b3.Status {
+func (this *Repeater) OnTick(tick *Tick) b3.Status {
+	fmt.Println("tick ", this.GetTitle())
 	if this.GetChild() == nil {
 		return b3.ERROR
 	}

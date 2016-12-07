@@ -21,11 +21,6 @@ type RepeatUntilFailure struct {
 	maxLoop int
 }
 
-func (this *RepeatUntilFailure) ctor() {
-	this.SetName("RepeatUntilFailure")
-	this.SetTitle("Repeat Until Failure")
-}
-
 /**
  * Initialization method.
  *
@@ -34,11 +29,12 @@ func (this *RepeatUntilFailure) ctor() {
  * - **milliseconds** (*Integer*) Maximum time, in milliseconds, a child
  *                                can execute.
  *
- * @method initialize
+ * @method Initialize
  * @param {Object} settings Object with parameters.
- * @constructor
+ * @construCtor
 **/
-func (this *RepeatUntilFailure) initialize(setting *BTNodeCfg) {
+func (this *RepeatUntilFailure) Initialize(setting *BTNodeCfg) {
+	this.Decorator.Initialize(setting)
 	this.maxLoop = setting.GetPropertyAsInt("maxLoop")
 	if this.maxLoop < 1 {
 		panic("maxLoop parameter in MaxTime decorator is an obligatory parameter")
@@ -50,7 +46,7 @@ func (this *RepeatUntilFailure) initialize(setting *BTNodeCfg) {
  * @method open
  * @param {Tick} tick A tick instance.
 **/
-func (this *RepeatUntilFailure) open(tick *Tick) {
+func (this *RepeatUntilFailure) OnOpen(tick *Tick) {
 	tick.Blackboard.Set("i", 0, tick.GetTree().GetID(), this.GetID())
 }
 
@@ -60,7 +56,7 @@ func (this *RepeatUntilFailure) open(tick *Tick) {
  * @param {b3.Tick} tick A tick instance.
  * @return {Constant} A state constant.
 **/
-func (this *RepeatUntilFailure) tick(tick *Tick) b3.Status {
+func (this *RepeatUntilFailure) OnTick(tick *Tick) b3.Status {
 	if this.GetChild() == nil {
 		return b3.ERROR
 	}

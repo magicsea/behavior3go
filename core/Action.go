@@ -7,7 +7,6 @@ import (
 
 type IAction interface {
 	IBaseNode
-	tick(tick *Tick) b3.Status
 }
 
 /**
@@ -29,14 +28,17 @@ type IAction interface {
 **/
 type Action struct {
 	BaseNode
+	BaseWorker
 }
 
-func (this *Action) ctor() {
+func (this *Action) Ctor() {
 	this.category = b3.ACTION
 }
-func (this *Action) initialize(params *BTNodeCfg) {
+func (this *Action) Initialize(params *BTNodeCfg) {
+
 	//this.id = b3.CreateUUID()
-	this.BaseNode.initialize(params)
+	this.BaseNode.Initialize(params)
+	//this.BaseNode.IBaseWorker = this
 	this.parameters = make(map[string]interface{})
 	this.properties = make(map[string]interface{})
 }

@@ -20,11 +20,6 @@ type Limiter struct {
 	maxLoop int
 }
 
-func (this *Limiter) ctor() {
-	this.SetName("Limiter")
-	this.SetTitle("Limit <maxLoop> Activations")
-}
-
 /**
  * Initialization method.
  *
@@ -33,11 +28,12 @@ func (this *Limiter) ctor() {
  * - **milliseconds** (*Integer*) Maximum time, in milliseconds, a child
  *                                can execute.
  *
- * @method initialize
+ * @method Initialize
  * @param {Object} settings Object with parameters.
- * @constructor
+ * @construCtor
 **/
-func (this *Limiter) initialize(setting *BTNodeCfg) {
+func (this *Limiter) Initialize(setting *BTNodeCfg) {
+	this.Decorator.Initialize(setting)
 	this.maxLoop = setting.GetPropertyAsInt("maxLoop")
 	if this.maxLoop < 1 {
 		panic("maxLoop parameter in MaxTime decorator is an obligatory parameter")
@@ -49,7 +45,7 @@ func (this *Limiter) initialize(setting *BTNodeCfg) {
  * @method open
  * @param {Tick} tick A tick instance.
 **/
-func (this *Limiter) open(tick *Tick) {
+func (this *Limiter) OnOpen(tick *Tick) {
 	tick.Blackboard.Set("i", 0, tick.GetTree().GetID(), this.GetID())
 }
 
@@ -59,7 +55,7 @@ func (this *Limiter) open(tick *Tick) {
  * @param {b3.Tick} tick A tick instance.
  * @return {Constant} A state constant.
 **/
-func (this *Limiter) tick(tick *Tick) b3.Status {
+func (this *Limiter) OnTick(tick *Tick) b3.Status {
 	if this.GetChild() == nil {
 		return b3.ERROR
 	}

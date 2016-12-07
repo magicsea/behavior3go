@@ -117,16 +117,16 @@ type BehaviorTree struct {
 
 func NewBeTree() *BehaviorTree {
 	tree := &BehaviorTree{}
-	tree.initialize()
+	tree.Initialize()
 	return tree
 }
 
 /**
  * Initialization method.
- * @method initialize
- * @constructor
+ * @method Initialize
+ * @construCtor
 **/
-func (this *BehaviorTree) initialize() {
+func (this *BehaviorTree) Initialize() {
 	this.id = b3.CreateUUID()
 	this.title = "The behavior tree"
 	this.description = "Default description"
@@ -137,6 +137,10 @@ func (this *BehaviorTree) initialize() {
 
 func (this *BehaviorTree) GetID() string {
 	return this.id
+}
+
+func (this *BehaviorTree) SetDebug(debug interface{}) {
+	this.debug = debug
 }
 
 /**
@@ -197,9 +201,9 @@ func (this *BehaviorTree) Load(data *config.BTTreeCfg, maps *b3.RegisterStructMa
 			panic("BehaviorTree.load: Invalid node name:" + spec.Name + ",title:" + spec.Title)
 		}
 
-		node.ctor()
-		node.initialize(spec)
-
+		node.Ctor()
+		node.Initialize(spec)
+		node.SetBaseNodeWorker(node.(IBaseWorker))
 		nodes[id] = node
 	}
 
@@ -257,7 +261,7 @@ func (this *BehaviorTree) dump() *config.BTTreeCfg {
  * @param {Blackboard} blackboard An instance of blackboard object.
  * @return {Constant} The tick signal state.
 **/
-func (this *BehaviorTree) tick(target interface{}, blackboard *Blackboard) b3.Status {
+func (this *BehaviorTree) Tick(target interface{}, blackboard *Blackboard) b3.Status {
 	if blackboard == nil {
 		panic("The blackboard parameter is obligatory and must be an instance of b3.Blackboard")
 	}
@@ -306,7 +310,7 @@ func printNode(root IBaseNode, blk int) {
 
 	//fmt.Println("new node:", root.Name, " children:", len(root.Children), " child:", root.Child)
 	for i := 0; i < blk; i++ {
-		fmt.Print("    ") //缩进
+		fmt.Print(" ") //缩进
 	}
 
 	//fmt.Println("|—<", root.Name, ">") //打印"|—<id>"形式

@@ -7,8 +7,7 @@ import (
 	. "github.com/magicsea/behavior3go/config"
 )
 
-//type TParams *config.BTNodeCfg
-type IBaseFunc interface {
+type IBaseWrapper interface {
 	_execute(tick *Tick) b3.Status
 	_enter(tick *Tick)
 	_open(tick *Tick)
@@ -17,13 +16,15 @@ type IBaseFunc interface {
 	_exit(tick *Tick)
 }
 type IBaseNode interface {
-	IBaseFunc
-	ctor()
-	initialize(params *BTNodeCfg)
+	IBaseWrapper
+
+	Ctor()
+	Initialize(params *BTNodeCfg)
 	GetCategory() string
 	Execute(tick *Tick) b3.Status
 	GetName() string
 	GetTitle() string
+	SetBaseNodeWorker(worker IBaseWorker)
 }
 
 /**
@@ -48,6 +49,7 @@ type IBaseNode interface {
  * @class BaseNode
 **/
 type BaseNode struct {
+	IBaseWorker
 	/**
 	 * Node ID.
 	 * @property {string} id
@@ -116,7 +118,7 @@ type BaseNode struct {
 	properties map[string]interface{}
 }
 
-func (this *BaseNode) ctor() {
+func (this *BaseNode) Ctor() {
 
 }
 
@@ -127,12 +129,16 @@ func (this *BaseNode) SetTitle(name string) {
 	this.name = name
 }
 
+func (this *BaseNode) SetBaseNodeWorker(worker IBaseWorker) {
+	this.IBaseWorker = worker
+}
+
 /**
  * Initialization method.
- * @method initialize
- * @constructor
+ * @method Initialize
+ * @construCtor
 **/
-func (this *BaseNode) initialize(params *BTNodeCfg) {
+func (this *BaseNode) Initialize(params *BTNodeCfg) {
 	//this.id = b3.CreateUUID()
 	//this.title       = this.title || this.name
 	this.description = ""
@@ -176,6 +182,7 @@ func (this *BaseNode) GetTitle() string {
  * @protected
 **/
 func (this *BaseNode) _execute(tick *Tick) b3.Status {
+	//fmt.Println("_execute :", this.title)
 	// ENTER
 	this._enter(tick)
 
@@ -209,7 +216,7 @@ func (this *BaseNode) Execute(tick *Tick) b3.Status {
 **/
 func (this *BaseNode) _enter(tick *Tick) {
 	tick._enterNode(this)
-	this.enter(tick)
+	this.OnEnter(tick)
 }
 
 /**
@@ -219,9 +226,10 @@ func (this *BaseNode) _enter(tick *Tick) {
  * @protected
 **/
 func (this *BaseNode) _open(tick *Tick) {
+	//fmt.Println("_open :", this.title)
 	tick._openNode(this)
 	tick.Blackboard.Set("isOpen", true, tick.tree.id, this.id)
-	this.open(tick)
+	this.OnOpen(tick)
 }
 
 /**
@@ -232,8 +240,9 @@ func (this *BaseNode) _open(tick *Tick) {
  * @protected
 **/
 func (this *BaseNode) _tick(tick *Tick) b3.Status {
+	//fmt.Println("_tick :", this.title)
 	tick._tickNode(this)
-	return this.tick(tick)
+	return this.OnTick(tick)
 }
 
 /**
@@ -245,7 +254,7 @@ func (this *BaseNode) _tick(tick *Tick) b3.Status {
 func (this *BaseNode) _close(tick *Tick) {
 	tick._closeNode(this)
 	tick.Blackboard.Set("isOpen", false, tick.tree.id, this.id)
-	this.close(tick)
+	this.OnClose(tick)
 }
 
 /**
@@ -256,64 +265,5 @@ func (this *BaseNode) _close(tick *Tick) {
 **/
 func (this *BaseNode) _exit(tick *Tick) {
 	tick._exitNode(this)
-	this.exit(tick)
-}
-
-/**
- * Enter method, override this to use. It is called every time a node is
- * asked to execute, before the tick itself.
- *
- * @method enter
- * @param {Tick} tick A tick instance.
-**/
-func (this *BaseNode) enter(tick *Tick) {
-
-}
-
-/**
- * Open method, override this to use. It is called only before the tick
- * callback and only if the not isn't closed.
- *
- * Note: a node will be closed if it returned `b3.RUNNING` in the tick.
- *
- * @method open
- * @param {Tick} tick A tick instance.
-**/
-func (this *BaseNode) open(tick *Tick) {
-
-}
-
-/**
- * Tick method, override this to use. This method must contain the real
- * execution of node (perform a task, call children, etc.). It is called
- * every time a node is asked to execute.
- *
- * @method tick
- * @param {Tick} tick A tick instance.
-**/
-func (this *BaseNode) tick(tick *Tick) b3.Status {
-	return b3.ERROR
-}
-
-/**
- * Close method, override this to use. This method is called after the tick
- * callback, and only if the tick return a state different from
- * `b3.RUNNING`.
- *
- * @method close
- * @param {Tick} tick A tick instance.
-**/
-func (this *BaseNode) close(tick *Tick) {
-
-}
-
-/**
- * Exit method, override this to use. Called every time in the end of the
- * execution.
- *
- * @method exit
- * @param {Tick} tick A tick instance.
-**/
-func (this *BaseNode) exit(tick *Tick) {
-
+	this.OnExit(tick)
 }

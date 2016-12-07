@@ -11,18 +11,21 @@ type ICondition interface {
 
 type Condition struct {
 	BaseNode
+	BaseWorker
 }
 
-func (this *Condition) ctor() {
+func (this *Condition) Ctor() {
+
 	this.category = b3.CONDITION
 }
 
 /**
  * Initialization method.
  *
- * @method initialize
- * @constructor
+ * @method Initialize
+ * @construCtor
 **/
-func (this *Condition) initialize(params *BTNodeCfg) {
-	this.BaseNode.initialize(params)
+func (this *Condition) Initialize(params *BTNodeCfg) {
+	this.BaseNode.Initialize(params)
+	//this.BaseNode.IBaseWorker = this
 }

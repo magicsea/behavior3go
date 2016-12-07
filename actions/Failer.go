@@ -9,10 +9,6 @@ type Failer struct {
 	Action
 }
 
-func (this *Failer) ctor() {
-	this.SetName("Failer")
-}
-
-func (this *Failer) tick(tick *Tick) b3.Status {
+func (this *Failer) OnTick(tick *Tick) b3.Status {
 	return b3.FAILURE
 }

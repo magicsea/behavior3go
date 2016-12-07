@@ -33,7 +33,7 @@ func getGuid() string {
  * (consult http://www.ietf.org/rfc/rfc4122.txt).
  *
  * @class createUUID
- * @constructor
+ * @construCtor
  * @return {String} A unique ID.
 **/
 func CreateUUID() string {

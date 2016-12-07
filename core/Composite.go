@@ -1,6 +1,8 @@
 package core
 
 import (
+	"fmt"
+
 	b3 "github.com/magicsea/behavior3go"
 	. "github.com/magicsea/behavior3go/config"
 )
@@ -14,22 +16,27 @@ type IComposite interface {
 
 type Composite struct {
 	BaseNode
+	BaseWorker
+
 	children []IBaseNode
 }
 
-func (this *Composite) ctor() {
+func (this *Composite) Ctor() {
+
 	this.category = b3.COMPOSITE
 }
 
 /**
  * Initialization method.
  *
- * @method initialize
- * @constructor
+ * @method Initialize
+ * @construCtor
 **/
-func (this *Composite) initialize(params *BTNodeCfg) {
-	this.BaseNode.initialize(params)
+func (this *Composite) Initialize(params *BTNodeCfg) {
+	this.BaseNode.Initialize(params)
+	//this.BaseNode.IBaseWorker = this
 	this.children = make([]IBaseNode, 0)
+	fmt.Println("Composite Initialize")
 }
 
 /**
@@ -49,4 +56,8 @@ func (this *Composite) GetChild(index int) IBaseNode {
 //AddChild
 func (this *Composite) AddChild(child IBaseNode) {
 	this.children = append(this.children, child)
+}
+func (this *Composite) tick(tick *Tick) b3.Status {
+	fmt.Println("tick Composite1")
+	return b3.ERROR
 }

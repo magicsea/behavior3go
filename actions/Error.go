@@ -7,14 +7,8 @@ import (
 
 type Error struct {
 	Action
-	st string
 }
 
-func (this *Error) ctor() {
-	this.SetName("Error")
-	this.st = "AAAAAAAAAA"
-}
-
-func (this *Error) tick(tick *Tick) b3.Status {
+func (this *Error) OnTick(tick *Tick) b3.Status {
 	return b3.ERROR
 }

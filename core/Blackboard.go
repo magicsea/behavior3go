@@ -83,7 +83,13 @@ type Blackboard struct {
 	_treeMemory map[string]*TreeMemory
 }
 
-func (this *Blackboard) initialize() {
+func NewBlackboard() *Blackboard {
+	p := &Blackboard{}
+	p.Initialize()
+	return p
+}
+
+func (this *Blackboard) Initialize() {
 	this._baseMemory = NewMemory()
 	this._treeMemory = make(map[string]*TreeMemory)
 }
@@ -202,13 +208,22 @@ func (this *Blackboard) Get(key, treeScope, nodeScope string) interface{} {
 }
 func (this *Blackboard) GetBool(key, treeScope, nodeScope string) bool {
 	v := this.Get(key, treeScope, nodeScope)
+	if v == nil {
+		return false
+	}
 	return v.(bool)
 }
 func (this *Blackboard) GetInt(key, treeScope, nodeScope string) int {
 	v := this.Get(key, treeScope, nodeScope)
+	if v == nil {
+		return 0
+	}
 	return v.(int)
 }
 func (this *Blackboard) GetInt64(key, treeScope, nodeScope string) int64 {
 	v := this.Get(key, treeScope, nodeScope)
+	if v == nil {
+		return 0
+	}
 	return v.(int64)
 }
