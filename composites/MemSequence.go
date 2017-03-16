@@ -37,5 +37,5 @@ func (this *MemSequence) OnTick(tick *Tick) b3.Status {
 			return status
 		}
 	}
-	return b3.FAILURE
+	return b3.SUCCESS
 }
