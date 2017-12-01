@@ -53,7 +53,7 @@ func TestLoadTree(t *testing.T) {
 	if ok {
 		//自定义节点注册
 		maps := b3.NewRegisterStructMaps()
-		maps.Register("LogTest", new(LogTest))
+		maps.Register("Log", new(LogTest))
 
 		//载入
 		tree := CreateBevTreeFromConfig(treeConfig, maps)

@@ -279,7 +279,7 @@ func (this *BehaviorTree) Tick(target interface{}, blackboard *Blackboard) b3.St
 	/* CLOSE NODES FROM LAST TICK, IF NEEDED */
 	var lastOpenNodes = blackboard._getTreeData(this.id).OpenNodes
 	var currOpenNodes []IBaseNode
-	copy(tick._openNodes, currOpenNodes)
+	currOpenNodes = append(currOpenNodes, tick._openNodes...)
 
 	// does not close if it is still open in this tick
 	var start = 0
