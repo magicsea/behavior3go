@@ -12,6 +12,6 @@ golang behavior tree,from http://behavior3.com
 [io类游戏示例](https://github.com/magicsea/h5game/tree/master/server)  
 bin/b3.json为行为树的数据，在编辑器中导入树就可以还原工程，如图。  
 
-![image](https://github.com/magicsea/behavior3go/tree/master/b3_simple1.png)
+![image](https://github.com/magicsea/behavior3go/blob/master/b3_simple1.png)
 ## 联系
 QQ群:285728047
