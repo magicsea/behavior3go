@@ -8,5 +8,10 @@ golang behavior tree,from http://behavior3.com
 ## 示例
 在loader文件夹里，参考loader_test.go。  
 通过tree.json文件与编辑器关联，可使用编辑器导入导出此文件内容。
+## 完整示例
+[io类游戏示例](https://github.com/magicsea/h5game/tree/master/server)  
+bin/b3.json为行为树的数据，在编辑器中导入树就可以还原工程，如图。  
+
+![image](https://github.com/magicsea/behavior3go/tree/master/b3_simple1.png)
 ## 联系
 QQ群:285728047

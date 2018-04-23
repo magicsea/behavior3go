@@ -151,3 +151,7 @@ func (this *Tick) _closeNode(node *BaseNode) {
 func (this *Tick) _exitNode(node *BaseNode) {
 	// TODO: call debug here
 }
+
+func (this *Tick) GetTarget() interface{} {
+	return this.target
+}
