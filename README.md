@@ -6,11 +6,11 @@ golang behavior tree,from https://github.com/behavior3
 此行为树和一般的行为树略有不同，行为树结构只保持一份无状态，状态记录在黑板里（一般行为树每个对象一份树结构，树结构保存状态）。  
 [重新部署的WEB版编辑器](http://47.101.48.70/b3/#/dash/home)  
 [编译好的桌面版](https://pan.baidu.com/s/1L68N-AODskOKrw-0vCYKJQ)
-## 示例
-- load_from_tree：从导出的树文件加载示例
-- load_from_project：从导出的工程文件加载示例
-- load_from_rawproject：从原生工程文件加载示例（）
-- subtree：子树的使用示例（需要修改编辑器支持导出nodes里的"category": "tree"）
+## 示例 Examples
+- [load_from_tree](https://github.com/magicsea/behavior3go/tree/master/examples/load_from_tree)  ：从导出的树文件加载示例
+- [load_from_project](https://github.com/magicsea/behavior3go/tree/master/examples/load_from_project) ：从导出的工程文件加载示例
+- [load_from_rawproject](https://github.com/magicsea/behavior3go/tree/master/examples/load_from_rawproject) ：从原生工程文件加载示例
+- [subtree](https://github.com/magicsea/behavior3go/tree/master/examples/subtree) ：子树的使用示例（需要修改编辑器支持导出nodes里的"category": "tree"）
 
 ## 完整示例
 [io类游戏示例](https://github.com/magicsea/h5game/tree/master/server)  
