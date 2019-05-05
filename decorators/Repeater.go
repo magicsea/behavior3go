@@ -1,7 +1,6 @@
 package decorators
 
 import (
-	"fmt"
 
 	b3 "github.com/magicsea/behavior3go"
 	. "github.com/magicsea/behavior3go/config"
@@ -58,7 +57,7 @@ func (this *Repeater) OnOpen(tick *Tick) {
  * @return {Constant} A state constant.
 **/
 func (this *Repeater) OnTick(tick *Tick) b3.Status {
-	fmt.Println("tick ", this.GetTitle())
+	//fmt.Println("tick ", this.GetTitle())
 	if this.GetChild() == nil {
 		return b3.ERROR
 	}
@@ -72,7 +71,6 @@ func (this *Repeater) OnTick(tick *Tick) b3.Status {
 			break
 		}
 	}
-
 	tick.Blackboard.Set("i", i, tick.GetTree().GetID(), this.GetID())
 	return status
 }

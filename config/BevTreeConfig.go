@@ -11,6 +11,7 @@ import (
 type BTNodeCfg struct {
 	Id          string                 `json:"id"`
 	Name        string                 `json:"name"`
+	Category    string                 `json:"category"`
 	Title       string                 `json:"title"`
 	Description string                 `json:"description"`
 	Children    []string               `json:"children"`
@@ -44,7 +45,24 @@ func (this *BTNodeCfg) GetPropertyAsInt64(name string) int64 {
 	i := int64(v)
 	return i
 }
+func (this *BTNodeCfg) GetPropertyAsBool(name string) bool {
+	v, ok := this.Properties[name]
+	if !ok {
+		//panic("GetProperty err ,no vlaue:" + name)
+		return false
+	}
 
+	b, fok := v.(bool)
+	if !fok {
+		if str, sok := v.(string); sok {
+			return str == "true"
+		}
+		fmt.Println("GetProperty err ,format not bool:", name, v)
+		panic("GetProperty err ,format not bool:" + name)
+		return false
+	}
+	return b
+}
 func (this *BTNodeCfg) GetPropertyAsString(name string) string {
 	v, ok := this.Properties[name]
 	if !ok {
@@ -63,6 +81,7 @@ func (this *BTNodeCfg) GetPropertyAsString(name string) string {
 
 //树json类型
 type BTTreeCfg struct {
+	ID          string                 `json:"id"`
 	Title       string                 `json:"title"`
 	Description string                 `json:"description"`
 	Root        string                 `json:"root"`
@@ -85,6 +104,6 @@ func LoadTreeCfg(path string) (*BTTreeCfg, bool) {
 		return nil, false
 	}
 
-	fmt.Println("load tree:", tree.Title, " nodes:", len(tree.Nodes))
+	//fmt.Println("load tree:", tree.Title, " nodes:", len(tree.Nodes))
 	return &tree, true
 }

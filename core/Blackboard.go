@@ -1,5 +1,9 @@
 package core
 
+import (
+	"fmt"
+	"reflect"
+)
 /**
  * The Blackboard is the memory structure required by `BehaviorTree` and its
  * nodes. It only have 2 public methods: `set` and `get`. These methods works
@@ -65,7 +69,9 @@ func (this *Memory) Get(key string) interface{} {
 func (this *Memory) Set(key string, val interface{}) {
 	this._memory[key] = val
 }
-
+func (this *Memory) Remove(key string) {
+	delete(this._memory,key)
+}
 //------------------------TreeMemory-------------------------
 type TreeMemory struct {
 	*Memory
@@ -177,6 +183,10 @@ func (this *Blackboard) Set(key string, value interface{}, treeScope, nodeScope 
 	var memory = this._getMemory(treeScope, nodeScope)
 	memory.Set(key, value)
 }
+func (this *Blackboard) Remove(key string) {
+	var memory = this._getMemory("", "")
+	memory.Remove(key)
+}
 func (this *Blackboard) SetTree(key string, value interface{}, treeScope string) {
 	var memory = this._getMemory(treeScope, "")
 	memory.Set(key, value)
@@ -206,6 +216,13 @@ func (this *Blackboard) Get(key, treeScope, nodeScope string) interface{} {
 	memory := this._getMemory(treeScope, nodeScope)
 	return memory.Get(key)
 }
+func (this *Blackboard) GetFloat64(key, treeScope, nodeScope string) float64 {
+	v := this.Get(key, treeScope, nodeScope)
+	if v == nil {
+		return 0
+	}
+	return v.(float64)
+}
 func (this *Blackboard) GetBool(key, treeScope, nodeScope string) bool {
 	v := this.Get(key, treeScope, nodeScope)
 	if v == nil {
@@ -227,6 +244,29 @@ func (this *Blackboard) GetInt64(key, treeScope, nodeScope string) int64 {
 	}
 	return v.(int64)
 }
+func (this *Blackboard) GetUInt64(key, treeScope, nodeScope string) uint64 {
+	v := this.Get(key, treeScope, nodeScope)
+	if v == nil {
+		return 0
+	}
+	return v.(uint64)
+}
+
+func (this *Blackboard) GetInt64Safe(key, treeScope, nodeScope string) int64 {
+	v := this.Get(key, treeScope, nodeScope)
+	if v == nil {
+		return 0
+	}
+	return ReadNumberToInt64(v)
+}
+func (this *Blackboard) GetUInt64Safe(key, treeScope, nodeScope string) uint64 {
+	v := this.Get(key, treeScope, nodeScope)
+	if v == nil {
+		return 0
+	}
+	return ReadNumberToUInt64(v)
+}
+
 func (this *Blackboard) GetInt32(key, treeScope, nodeScope string) int32 {
 	v := this.Get(key, treeScope, nodeScope)
 	if v == nil {
@@ -234,3 +274,60 @@ func (this *Blackboard) GetInt32(key, treeScope, nodeScope string) int32 {
 	}
 	return v.(int32)
 }
+
+func ReadNumberToInt64(v interface{})  int64 {
+	var ret int64
+	switch tvalue := v.(type) {
+	case uint64:
+		ret = int64(tvalue)
+	default:
+		panic(fmt.Sprintf("错误的类型转成Int64 %v:%+v", reflect.TypeOf(v), v))
+	}
+
+	return ret
+}
+
+func ReadNumberToUInt64(v interface{}) uint64 {
+	var ret uint64
+	switch tvalue := v.(type) {
+	case int64:
+		ret = uint64(tvalue)
+	default:
+		panic(fmt.Sprintf("错误的类型转成UInt64 %v:%+v", reflect.TypeOf(v), v))
+	}
+	return ret
+}
+//
+//func ReadNumberToInt32(v interface{}) int32 {
+//	var ret int32
+//	switch tvalue := v.(type) {
+//	case uint16, int16,uint32, int32,uint64,int64,uint16, int16,int:
+//		ret = int32(tvalue)
+//	default:
+//		panic(fmt.Sprintf("错误的类型转成Int32 %v:%+v", reflect.TypeOf(v), v))
+//	}
+//	return ret
+//}
+//
+//func ReadNumberToUInt32(v interface{}) uint32 {
+//	var ret uint32
+//	switch tvalue := v.(type) {
+//	case uint16, int16,uint32, int32,uint64,int64,uint16, int16,int:
+//		ret = uint32(tvalue)
+//	default:
+//		panic(fmt.Sprintf("错误的类型转成UInt32 %v:%+v", reflect.TypeOf(v), v))
+//	}
+//	return ret
+//}
+//
+//
+//func ReadNumberToInt(v interface{}) int {
+//	var ret int
+//	switch tvalue := v.(type) {
+//	case uint16, int16,uint32, int32,uint64,int64,uint16, int16,int:
+//		ret = int(tvalue)
+//	default:
+//		panic(fmt.Sprintf("int %v:%+v", reflect.TypeOf(v), v))
+//	}
+//	return ret
+//}

@@ -25,6 +25,7 @@ type IBaseNode interface {
 	GetName() string
 	GetTitle() string
 	SetBaseNodeWorker(worker IBaseWorker)
+	GetBaseNodeWorker() IBaseWorker
 }
 
 /**
@@ -131,6 +132,10 @@ func (this *BaseNode) SetTitle(name string) {
 
 func (this *BaseNode) SetBaseNodeWorker(worker IBaseWorker) {
 	this.IBaseWorker = worker
+}
+
+func (this *BaseNode) GetBaseNodeWorker() IBaseWorker {
+	return this.IBaseWorker
 }
 
 /**

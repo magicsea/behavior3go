@@ -36,7 +36,7 @@ func (this *Composite) Initialize(params *BTNodeCfg) {
 	this.BaseNode.Initialize(params)
 	//this.BaseNode.IBaseWorker = this
 	this.children = make([]IBaseNode, 0)
-	fmt.Println("Composite Initialize")
+	//fmt.Println("Composite Initialize")
 }
 
 /**

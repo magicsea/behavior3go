@@ -10,6 +10,8 @@ import (
 	"reflect"
 )
 
+
+
 //生成32位md5字串
 func getMd5String(s string) string {
 	h := md5.New()
@@ -76,16 +78,16 @@ func NewRegisterStructMaps() *RegisterStructMaps {
 //根据name初始化结构
 //在这里根据结构的成员注解进行DI注入，这里没有实现，只是简单都初始化
 func (rsm *RegisterStructMaps) New(name string) (interface{}, error) {
-	fmt.Println("New ", name)
+	//fmt.Println("New ", name)
 	var c interface{}
 	var err error
 	if v, ok := rsm.maps[name]; ok {
 		c = reflect.New(v).Interface()
-		fmt.Println("found ", name, "  ", reflect.TypeOf(c))
+		//fmt.Println("found ", name, "  ", reflect.TypeOf(c))
 		return c, nil
 	} else {
 		err = fmt.Errorf("not found %s struct", name)
-		fmt.Println("New no found", name, "  ", len(rsm.maps))
+		//fmt.Println("New no found", name, "  ", len(rsm.maps))
 	}
 	return nil, err
 }
@@ -102,3 +104,5 @@ func (rsm *RegisterStructMaps) CheckElem(name string) bool {
 func (rsm *RegisterStructMaps) Register(name string, c interface{}) {
 	rsm.maps[name] = reflect.TypeOf(c).Elem()
 }
+
+

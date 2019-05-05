@@ -183,22 +183,28 @@ func (this *BehaviorTree) Load(data *config.BTTreeCfg, maps *b3.RegisterStructMa
 	for id, s := range data.Nodes {
 		spec := &s
 		var node IBaseNode
-		if extMaps != nil && extMaps.CheckElem(spec.Name) {
-			// Look for the name in custom nodes
-			if tnode, err := extMaps.New(spec.Name); err == nil {
-				node = tnode.(IBaseNode)
-			}
+
+		if spec.Category == "tree" {
+			node = new(SubTree)
 		} else {
-			if tnode, err2 := maps.New(spec.Name); err2 == nil {
-				node = tnode.(IBaseNode)
+			if extMaps != nil && extMaps.CheckElem(spec.Name) {
+				// Look for the name in custom nodes
+				if tnode, err := extMaps.New(spec.Name); err == nil {
+					node = tnode.(IBaseNode)
+				}
 			} else {
-				fmt.Println("new ", spec.Name, " err:", err2)
+				if tnode, err2 := maps.New(spec.Name); err2 == nil {
+					node = tnode.(IBaseNode)
+				} else {
+					//fmt.Println("new ", spec.Name, " err:", err2)
+				}
 			}
 		}
 
 		if node == nil {
 			// Invalid node name
 			panic("BehaviorTree.load: Invalid node name:" + spec.Name + ",title:" + spec.Title)
+
 		}
 
 		node.Ctor()

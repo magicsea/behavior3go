@@ -1,0 +1,110 @@
+{
+  "id": "67e3047e-0942-4d55-8443-9f28dc50b660",
+  "title": "A behavior tree",
+  "description": "",
+  "root": "3739a6fd-3205-45df-8f18-ab02f0c4b07e",
+  "properties": {},
+  "nodes": {
+    "8b514f0a-913e-4eaf-817b-03e85b98efa0": {
+      "id": "8b514f0a-913e-4eaf-817b-03e85b98efa0",
+      "name": "Repeater",
+      "title": "Repeat <maxLoop>x",
+      "description": "",
+      "properties": {
+        "maxLoop": 2
+      },
+      "display": {
+        "x": -144,
+        "y": -108
+      },
+      "child": "af4ac079-941b-49d6-85f2-11758f76bd26"
+    },
+    "7deef17b-e7fa-4dcb-94c5-979e142c0eee": {
+      "id": "7deef17b-e7fa-4dcb-94c5-979e142c0eee",
+      "name": "Log",
+      "title": "Log",
+      "description": "Log",
+      "properties": {
+        "info": "log...22"
+      },
+      "display": {
+        "x": -144,
+        "y": -12
+      }
+    },
+    "af4ac079-941b-49d6-85f2-11758f76bd26": {
+      "id": "af4ac079-941b-49d6-85f2-11758f76bd26",
+      "name": "Log",
+      "title": "Log",
+      "description": "Log",
+      "properties": {
+        "info": "log...11"
+      },
+      "display": {
+        "x": 96,
+        "y": -120
+      }
+    },
+    "2a5b35a6-f8f2-4922-993e-c9a3fa02beea": {
+      "id": "2a5b35a6-f8f2-4922-993e-c9a3fa02beea",
+      "name": "Limiter",
+      "title": "Limit <maxLoop> Activations",
+      "description": "",
+      "properties": {
+        "maxLoop": 2
+      },
+      "display": {
+        "x": -132,
+        "y": 108
+      },
+      "child": "6fb01fec-8fd7-49d0-b6ce-f9335937bfa3"
+    },
+    "6fb01fec-8fd7-49d0-b6ce-f9335937bfa3": {
+      "id": "6fb01fec-8fd7-49d0-b6ce-f9335937bfa3",
+      "name": "Log",
+      "title": "Log",
+      "description": "Log",
+      "properties": {
+        "info": "log...333"
+      },
+      "display": {
+        "x": 108,
+        "y": 108
+      }
+    },
+    "3739a6fd-3205-45df-8f18-ab02f0c4b07e": {
+      "id": "3739a6fd-3205-45df-8f18-ab02f0c4b07e",
+      "name": "MemSequence",
+      "title": "MemSequence",
+      "description": "",
+      "properties": {},
+      "display": {
+        "x": -348,
+        "y": -24
+      },
+      "children": [
+        "8b514f0a-913e-4eaf-817b-03e85b98efa0",
+        "7deef17b-e7fa-4dcb-94c5-979e142c0eee",
+        "2a5b35a6-f8f2-4922-993e-c9a3fa02beea"
+      ]
+    }
+  },
+  "display": {
+    "camera_x": 936.5,
+    "camera_y": 461,
+    "camera_z": 1,
+    "x": -504,
+    "y": -24
+  },
+  "custom_nodes": [
+    {
+      "name": "Log",
+      "category": "action",
+      "title": "Log",
+      "description": "Log",
+      "properties": {
+        "info": "log..."
+      }
+    }
+  ]
+}
