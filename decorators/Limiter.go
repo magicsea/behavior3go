@@ -41,15 +41,6 @@ func (this *Limiter) Initialize(setting *BTNodeCfg) {
 }
 
 /**
- * Open method.
- * @method open
- * @param {Tick} tick A tick instance.
-**/
-func (this *Limiter) OnOpen(tick *Tick) {
-	tick.Blackboard.Set("i", 0, tick.GetTree().GetID(), this.GetID())
-}
-
-/**
  * Tick method.
  * @method tick
  * @param {b3.Tick} tick A tick instance.
