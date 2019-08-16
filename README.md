@@ -20,7 +20,7 @@ bin/b3.json为行为树的数据，在编辑器中导入树就可以还原工程
 ![image](https://github.com/magicsea/behavior3go/blob/master/b3_simple1.png)
 
 ## 网页版编辑器本地搭建方法
-- 下载源码到本地(工程目录) https://github.com/behavior3/behavior3editor
+- 下载源码到本地(工程目录) https://github.com/magicsea/behavior3editor
 - 安装nodejs,npm
 - 安装bower: npm install -g bower
 - 安装依赖包:cd到工程目录下 npm install 然后 bower install
