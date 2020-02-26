@@ -37,5 +37,8 @@ bin/b3.json为行为树的数据，在编辑器中导入树就可以还原工程
 - 其他项目基础知识 https://www.behaviac.com/concepts/
 - 其他人写的behavior3go代码介绍 https://blog.csdn.net/u013272009/article/details/77131226
 
+## 上线项目
+* [丛林大作战](https://app.3dmgame.com/ios/6690.html)
+
 ## 联系
 QQ群:285728047
