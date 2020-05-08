@@ -7,15 +7,16 @@ golang behavior tree,from https://github.com/behavior3
 带在线编辑器的行为树，可使用官方的在线编辑器编辑逻辑节点。  
 使用js版本翻译，保持和原版的编辑器数据格式一致。   
 此行为树和一般的行为树略有不同，行为树结构只保持一份无状态，状态记录在黑板里（一般行为树每个对象一份树结构，树结构保存状态）。  
-[重新部署的WEB版编辑器](http://47.101.48.70/b3/#/dash/home)  
-[编译好的桌面版](https://pan.baidu.com/s/1L68N-AODskOKrw-0vCYKJQ)
+[专用的编辑器分支版本](https://github.com/magicsea/behavior3editor)   
+[重新部署的WEB版编辑器](http://magicsea.top:82/b3/#/editor)  
+[编译好的桌面版](https://github.com/magicsea/behavior3editor/releases)
 
 ## 示例 Examples
 
 - [load_from_tree](https://github.com/magicsea/behavior3go/tree/master/examples/load_from_tree)  ：从导出的树文件加载示例
 - [load_from_project](https://github.com/magicsea/behavior3go/tree/master/examples/load_from_project) ：从导出的工程文件加载示例
 - [load_from_rawproject](https://github.com/magicsea/behavior3go/tree/master/examples/load_from_rawproject) ：从原生工程文件加载示例
-- [subtree](https://github.com/magicsea/behavior3go/tree/master/examples/subtree) ：子树的使用示例（需要修改编辑器支持导出nodes里的"category": "tree"）
+- [subtree](https://github.com/magicsea/behavior3go/tree/master/examples/subtree) ：子树的使用示例（需要[专用的编辑器分支版本](https://github.com/magicsea/behavior3editor)）
 - [mmoarpg](examples/mmoarpg/zt.b3)：一个mmoarpg类型游戏的行为示例，可使用桌面版编辑器打开可以查看(Projects->open project)
 
 ## 完整示例
@@ -27,7 +28,7 @@ bin/b3.json为行为树的数据，在编辑器中导入树就可以还原工程
 
 ## 网页版编辑器本地搭建方法
 
-- 下载源码到本地(工程目录) https://github.com/behavior3/behavior3editor
+- 下载源码到本地(工程目录) https://github.com/magicsea/behavior3editor
 - 安装nodejs,npm
 - 安装bower: npm install -g bower
 - 安装依赖包:cd到工程目录下 npm install 然后 bower install
@@ -39,6 +40,16 @@ bin/b3.json为行为树的数据，在编辑器中导入树就可以还原工程
 ## 更新
 
 * 添加子树支持 SubTree 节点，需要编辑器修改node导出category字段
+
+## 其他的参考
+
+- 一些节点的概念 http://note.youdao.com/noteshare?id=4f46dc2144ea62b55f597630f5e666b4&sub=FF0B4E1D7916473E8DFC7242CFC62B69
+- 其他项目基础知识 https://www.behaviac.com/concepts/
+- 其他人写的behavior3go代码介绍 https://blog.csdn.net/u013272009/article/details/77131226
+
+## 上线项目
+
+* [丛林大作战](https://www.taptap.com/app/31608)
 
 ## 联系
 
