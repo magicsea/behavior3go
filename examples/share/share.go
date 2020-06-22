@@ -22,6 +22,6 @@ func (this *LogTest) Initialize(setting *BTNodeCfg) {
 }
 
 func (this *LogTest) OnTick(tick *Tick) b3.Status {
-	fmt.Println("logtest:", this.info)
+	fmt.Println("logtest:",tick.GetLastSubTree(), this.info)
 	return b3.SUCCESS
 }

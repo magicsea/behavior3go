@@ -139,8 +139,16 @@ func (this *BehaviorTree) GetID() string {
 	return this.id
 }
 
+func (this *BehaviorTree) GetTitile() string {
+	return this.title
+}
+
 func (this *BehaviorTree) SetDebug(debug interface{}) {
 	this.debug = debug
+}
+
+func  (this *BehaviorTree) GetRoot() IBaseNode {
+	return this.root
 }
 
 /**

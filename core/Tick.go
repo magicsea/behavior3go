@@ -55,6 +55,13 @@ type Tick struct {
 	_openNodes []IBaseNode
 
 	/**
+	 * The list of open subtree node.
+	 * push subtree node before execute subtree.
+	 * pop subtree node after execute subtree.
+	**/
+	_openSubtreeNodes []*SubTree
+
+	/**
 	 * The number of nodes entered during the tick. Update during the tree
 	 * traversal.
 	 *
@@ -63,6 +70,7 @@ type Tick struct {
 	 * @readOnly
 	**/
 	_nodeCount int
+
 }
 
 func NewTick() *Tick {
@@ -84,7 +92,8 @@ func (this *Tick) Initialize() {
 	this.Blackboard = nil
 
 	// updated during the tick signal
-	this._openNodes = make([]IBaseNode, 0)
+	this._openNodes = nil
+	this._openSubtreeNodes = nil
 	this._nodeCount = 0
 }
 
@@ -136,10 +145,33 @@ func (this *Tick) _closeNode(node *BaseNode) {
 	// TODO: call debug here
 
 	ulen := len(this._openNodes)
-	if len(this._openNodes) > 0 {
+	if ulen > 0 {
 		this._openNodes = this._openNodes[:ulen-1]
 	}
 
+}
+
+func (this *Tick) pushSubtreeNode(node *SubTree)  {
+	this._openSubtreeNodes = append(this._openSubtreeNodes,node)
+}
+func (this *Tick) popSubtreeNode()  {
+	ulen := len(this._openSubtreeNodes)
+	if ulen>0 {
+		this._openSubtreeNodes = this._openSubtreeNodes[:ulen-1]
+	}
+}
+
+/**
+ * return top subtree node.
+ * return nil when it is runing at major tree
+ *
+**/
+func (this *Tick) GetLastSubTree() *SubTree {
+	ulen := len(this._openSubtreeNodes)
+	if ulen>0 {
+		return this._openSubtreeNodes[ulen-1]
+	}
+	return nil
 }
 
 /**

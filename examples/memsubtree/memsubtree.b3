@@ -1,0 +1,337 @@
+{
+  "name": "memsubtree",
+  "description": "",
+  "data": {
+    "version": "0.3.0",
+    "scope": "project",
+    "selectedTree": "b8d8dfc5-d527-420f-8e10-0b75836a5ef0",
+    "trees": [
+      {
+        "version": "0.3.0",
+        "scope": "tree",
+        "id": "1f00ce39-153e-4dc1-84be-e94521c60548",
+        "title": "A behavior tree",
+        "description": "",
+        "root": "5536cc24-8071-466d-83a6-21d914d4a1d3",
+        "properties": {},
+        "nodes": {
+          "17efaf91-0001-44c6-87bd-389f703c9ba4": {
+            "id": "17efaf91-0001-44c6-87bd-389f703c9ba4",
+            "name": "b8d8dfc5-d527-420f-8e10-0b75836a5ef0",
+            "category": "tree",
+            "title": "submem 2",
+            "description": "",
+            "properties": {},
+            "display": {
+              "x": 276,
+              "y": 312
+            }
+          },
+          "eeb3791c-446d-49e5-a08a-db5b23d3dcb8": {
+            "id": "eeb3791c-446d-49e5-a08a-db5b23d3dcb8",
+            "name": "b8d8dfc5-d527-420f-8e10-0b75836a5ef0",
+            "category": "tree",
+            "title": "submem 1",
+            "description": "",
+            "properties": {},
+            "display": {
+              "x": 276,
+              "y": 168
+            }
+          },
+          "3fd48f44-7824-47d2-8fef-26f97f131303": {
+            "id": "3fd48f44-7824-47d2-8fef-26f97f131303",
+            "name": "IsValue",
+            "category": "condition",
+            "title": "IsValue(<key>) = <value>",
+            "description": "",
+            "properties": {
+              "value": 1,
+              "key": "key"
+            },
+            "display": {
+              "x": 276,
+              "y": 48
+            }
+          },
+          "5536cc24-8071-466d-83a6-21d914d4a1d3": {
+            "id": "5536cc24-8071-466d-83a6-21d914d4a1d3",
+            "name": "Priority",
+            "category": "composite",
+            "title": "Priority",
+            "description": "",
+            "properties": {},
+            "display": {
+              "x": -192,
+              "y": 144
+            },
+            "children": [
+              "77971f7b-7283-4a64-8081-471616f18318",
+              "17efaf91-0001-44c6-87bd-389f703c9ba4"
+            ]
+          },
+          "4def43af-6a54-461e-8c9b-12d44f25f085": {
+            "id": "4def43af-6a54-461e-8c9b-12d44f25f085",
+            "name": "Log",
+            "category": "action",
+            "title": "Log(<info>)",
+            "description": "",
+            "properties": {
+              "info": "break"
+            },
+            "display": {
+              "x": 276,
+              "y": 108
+            }
+          },
+          "77971f7b-7283-4a64-8081-471616f18318": {
+            "id": "77971f7b-7283-4a64-8081-471616f18318",
+            "name": "Sequence",
+            "category": "composite",
+            "title": "Sequence",
+            "description": "",
+            "properties": {},
+            "display": {
+              "x": 72,
+              "y": 108
+            },
+            "children": [
+              "3fd48f44-7824-47d2-8fef-26f97f131303",
+              "4def43af-6a54-461e-8c9b-12d44f25f085",
+              "eeb3791c-446d-49e5-a08a-db5b23d3dcb8"
+            ]
+          }
+        },
+        "display": {
+          "camera_x": 902,
+          "camera_y": 458.5,
+          "camera_z": 1,
+          "x": -372,
+          "y": 144
+        }
+      },
+      {
+        "version": "0.3.0",
+        "scope": "tree",
+        "id": "b8d8dfc5-d527-420f-8e10-0b75836a5ef0",
+        "title": "submem",
+        "description": "",
+        "root": "e443c067-35d0-4592-8808-0407e9ec1806",
+        "properties": {},
+        "nodes": {
+          "e443c067-35d0-4592-8808-0407e9ec1806": {
+            "id": "e443c067-35d0-4592-8808-0407e9ec1806",
+            "name": "MemSequence",
+            "category": "composite",
+            "title": "MemSequence",
+            "description": "",
+            "properties": {},
+            "display": {
+              "x": -252,
+              "y": 96
+            },
+            "children": [
+              "c1737249-f9e5-4bc4-81f3-e95e6c67df19",
+              "dd8aa885-586c-47f5-902c-ac44ca235473",
+              "741bcfc7-ab8c-4fb9-94a1-8beba20b8b30",
+              "c083feb0-7da1-470c-9489-dd52adaec1b6",
+              "5440496a-1d19-41d4-8805-376f7b11a22a",
+              "b2b9909d-6e09-476b-89f3-0fce2a4b75f9",
+              "d1ab3afa-af81-401f-8eb4-8444b58b5cd4",
+              "304b95ab-58b6-4158-86eb-419e3d313922",
+              "9926c41c-1918-44e4-aeb3-2807a2944893",
+              "88956e16-a0d9-4198-949f-f29281d372ce"
+            ]
+          },
+          "dd8aa885-586c-47f5-902c-ac44ca235473": {
+            "id": "dd8aa885-586c-47f5-902c-ac44ca235473",
+            "name": "Wait",
+            "category": "action",
+            "title": "1Wait <milliseconds>ms",
+            "description": "",
+            "properties": {
+              "milliseconds": 1001
+            },
+            "display": {
+              "x": -72,
+              "y": 96
+            }
+          },
+          "c1737249-f9e5-4bc4-81f3-e95e6c67df19": {
+            "id": "c1737249-f9e5-4bc4-81f3-e95e6c67df19",
+            "name": "Log",
+            "category": "action",
+            "title": "Log(<info>)",
+            "description": "",
+            "properties": {
+              "info": "sub0"
+            },
+            "display": {
+              "x": -72,
+              "y": 36
+            }
+          },
+          "5440496a-1d19-41d4-8805-376f7b11a22a": {
+            "id": "5440496a-1d19-41d4-8805-376f7b11a22a",
+            "name": "Log",
+            "category": "action",
+            "title": "Log(<info>)",
+            "description": "",
+            "properties": {
+              "info": "sub1"
+            },
+            "display": {
+              "x": -72,
+              "y": 204
+            }
+          },
+          "b2b9909d-6e09-476b-89f3-0fce2a4b75f9": {
+            "id": "b2b9909d-6e09-476b-89f3-0fce2a4b75f9",
+            "name": "Wait",
+            "category": "action",
+            "title": "2Wait <milliseconds>ms",
+            "description": "",
+            "properties": {
+              "milliseconds": 1002
+            },
+            "display": {
+              "x": -72,
+              "y": 252
+            }
+          },
+          "d1ab3afa-af81-401f-8eb4-8444b58b5cd4": {
+            "id": "d1ab3afa-af81-401f-8eb4-8444b58b5cd4",
+            "name": "Log",
+            "category": "action",
+            "title": "Log(<info>)",
+            "description": "",
+            "properties": {
+              "info": "sub2"
+            },
+            "display": {
+              "x": -84,
+              "y": 312
+            }
+          },
+          "304b95ab-58b6-4158-86eb-419e3d313922": {
+            "id": "304b95ab-58b6-4158-86eb-419e3d313922",
+            "name": "Wait",
+            "category": "action",
+            "title": "3Wait <milliseconds>ms",
+            "description": "",
+            "properties": {
+              "milliseconds": 1003
+            },
+            "display": {
+              "x": -84,
+              "y": 372
+            }
+          },
+          "c083feb0-7da1-470c-9489-dd52adaec1b6": {
+            "id": "c083feb0-7da1-470c-9489-dd52adaec1b6",
+            "name": "Log",
+            "category": "action",
+            "title": "Log(<info>)",
+            "description": "",
+            "properties": {
+              "info": "set 1"
+            },
+            "display": {
+              "x": 72,
+              "y": 168
+            }
+          },
+          "88956e16-a0d9-4198-949f-f29281d372ce": {
+            "id": "88956e16-a0d9-4198-949f-f29281d372ce",
+            "name": "Log",
+            "category": "action",
+            "title": "Log(<info>)",
+            "description": "",
+            "properties": {
+              "info": "set0"
+            },
+            "display": {
+              "x": 12,
+              "y": 480
+            }
+          },
+          "741bcfc7-ab8c-4fb9-94a1-8beba20b8b30": {
+            "id": "741bcfc7-ab8c-4fb9-94a1-8beba20b8b30",
+            "name": "SetValue",
+            "category": "action",
+            "title": "SetValue <key>=<value>",
+            "description": "",
+            "properties": {
+              "value": 1,
+              "key": "key"
+            },
+            "display": {
+              "x": 72,
+              "y": 132
+            }
+          },
+          "9926c41c-1918-44e4-aeb3-2807a2944893": {
+            "id": "9926c41c-1918-44e4-aeb3-2807a2944893",
+            "name": "SetValue",
+            "category": "action",
+            "title": "SetValue <key>=<value>",
+            "description": "",
+            "properties": {
+              "value": 0,
+              "key": "key"
+            },
+            "display": {
+              "x": 12,
+              "y": 432
+            }
+          }
+        },
+        "display": {
+          "camera_x": 982,
+          "camera_y": 257.5,
+          "camera_z": 1,
+          "x": -360,
+          "y": 96
+        }
+      }
+    ],
+    "custom_nodes": [
+      {
+        "version": "0.3.0",
+        "scope": "node",
+        "name": "Log",
+        "category": "action",
+        "title": "Log(<info>)",
+        "description": null,
+        "properties": {
+          "info": "log"
+        }
+      },
+      {
+        "version": "0.3.0",
+        "scope": "node",
+        "name": "IsValue",
+        "category": "condition",
+        "title": "IsValue(<key>) = <value>",
+        "description": null,
+        "properties": {
+          "value": 0,
+          "key": "key"
+        }
+      },
+      {
+        "version": "0.3.0",
+        "scope": "node",
+        "name": "SetValue",
+        "category": "action",
+        "title": "SetValue <key>=<value>",
+        "description": null,
+        "properties": {
+          "value": 0,
+          "key": "key"
+        }
+      }
+    ]
+  },
+  "path": "D:\\memsubtree.b3"
+}
