@@ -52,7 +52,10 @@ bin/b3.json为行为树的数据，在编辑器中新建任意工程，选择（
 ```
 A:是个问题，但是由于下一次进入会onopen重置节点黑板信息，并不会有错误表现。如果遇到BUG表现欢迎提出。
 ```
-
+- Q:Tick里的target如何调用
+```
+A:用在ai里，一般target就这个ai的拥有者，拥有者有blackboard的成员。
+```
 ## 上线项目
 
 * [丛林大作战](https://www.taptap.com/app/31608)
