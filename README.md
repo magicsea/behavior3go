@@ -47,6 +47,10 @@ bin/b3.json为行为树的数据，在编辑器中新建任意工程，选择（
 - 其他项目基础知识 https://www.behaviac.com/concepts/
 - 其他人写的behavior3go代码介绍 https://blog.csdn.net/u013272009/article/details/77131226
 
+## FAQ
+- Q:子树的相同记忆节点的黑板信息是重复的？
+A:是个问题，但是由于下一次进入会onopen重置节点黑板信息，并不会有错误表现。如果遇到BUG表现欢迎提出。
+
 ## 上线项目
 
 * [丛林大作战](https://www.taptap.com/app/31608)
