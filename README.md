@@ -46,7 +46,7 @@ bin/b3.json为行为树的数据，在编辑器中新建任意工程，选择（
 - 一些节点的概念 http://note.youdao.com/noteshare?id=4f46dc2144ea62b55f597630f5e666b4&sub=FF0B4E1D7916473E8DFC7242CFC62B69
 - 其他项目基础知识 https://www.behaviac.com/concepts/
 - 其他人写的behavior3go代码介绍 https://blog.csdn.net/u013272009/article/details/77131226
-
+- behavior3的erlang实现，同时里面有一些行为树基础分享：https://github.com/dong50252409/behavior3erl
 ## FAQ
 - Q:子树的相同记忆节点的黑板信息是重复的？
 ```
