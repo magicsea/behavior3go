@@ -8,7 +8,7 @@ golang behavior tree,from https://github.com/behavior3
 使用js版本翻译，保持和原版的编辑器数据格式一致。   
 此行为树和一般的行为树略有不同，行为树结构只保持一份无状态，状态记录在黑板里（一般行为树每个对象一份树结构，树结构保存状态）。  
 [专用的编辑器分支版本](https://github.com/magicsea/behavior3editor)   
-[重新部署的WEB版编辑器](http://magicsea.top:82/b3/#/editor)  
+[重新部署的WEB版编辑器](http://42.192.0.160:8888/b3/#/dash/home)  
 [编译好的桌面版](https://github.com/magicsea/behavior3editor/releases)
 
 ## 示例 Examples
