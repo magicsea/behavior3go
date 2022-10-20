@@ -56,7 +56,7 @@ A:是个问题，但是由于下一次进入会onopen重置节点黑板信息，
 ```
 A:用在ai里，一般target就这个ai的拥有者，拥有者有blackboard的成员。
 ```
--Q:如何设计打断一个进行中的状态？
+- Q:如何设计打断一个进行中的状态？   
 A:参考https://github.com/magicsea/behavior3go/issues/15
 ## TODO
 - [ ] 参数类型化
