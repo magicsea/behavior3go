@@ -72,9 +72,7 @@ func (this *BTNodeCfg) GetPropertyAsString(name string) string {
 
 	str, fok := v.(string)
 	if !fok {
-		fmt.Println("GetProperty err ,format not string:", name, v)
-		panic("GetProperty err ,format not string:" + name)
-		return ""
+		return fmt.Sprintf("%v",v)
 	}
 	return str
 }
