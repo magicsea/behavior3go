@@ -295,15 +295,11 @@ func (this *BehaviorTree) Tick(target interface{}, blackboard *Blackboard) b3.St
 	var currOpenNodes []IBaseNode
 	currOpenNodes = append(currOpenNodes, tick._openNodes...)
 
-	var same bool
 	l := len(lastOpenNodes)
 	if l == len(currOpenNodes) {
 		if l == 0 || lastOpenNodes[l-1] == currOpenNodes[l-1] {
-			same = true
+			return state
 		}
-	}
-	if same {
-		return state
 	}
 
 	// does not close if it is still open in this tick
