@@ -1,0 +1,329 @@
+{
+  "name": "testwork",
+  "description": "",
+  "data": {
+    "version": "0.3.0",
+    "scope": "project",
+    "selectedTree": "9e6f6cb9-d3d2-41af-9d03-3ab247d42be7",
+    "trees": [
+      {
+        "version": "0.3.0",
+        "scope": "tree",
+        "id": "9e6f6cb9-d3d2-41af-9d03-3ab247d42be7",
+        "title": "A behavior tree",
+        "description": "",
+        "root": "7656895d-d268-4252-81bc-e0cd013add4b",
+        "properties": {},
+        "nodes": {
+          "197a07a2-1444-4088-8dd9-509d5208c6e8": {
+            "id": "197a07a2-1444-4088-8dd9-509d5208c6e8",
+            "name": "MemSequence",
+            "category": "composite",
+            "title": "MemSequence1",
+            "description": "",
+            "properties": {},
+            "display": {
+              "x": 240,
+              "y": 60
+            },
+            "children": [
+              "9fbbec3b-3f57-4fa9-8800-021859a5baf1",
+              "866d2e78-120e-446e-8e87-3dfc93eed895",
+              "f54a5051-b8ba-4296-958b-99f0da7f5c0f",
+              "5dad8fe4-3d34-4a75-a82e-ac4aa3a33c3f",
+              "93c25ee3-7dda-41e6-92a0-a9c2302c6d91",
+              "819cd7d8-eed8-4294-bacd-e6cdfe04fcbc",
+              "17c2e7c4-d571-4772-8e8b-79045a9125d3"
+            ]
+          },
+          "42f24b36-88a5-4c20-b8c7-0579145cb71c": {
+            "id": "42f24b36-88a5-4c20-b8c7-0579145cb71c",
+            "name": "MemSequence",
+            "category": "composite",
+            "title": "MemSequence2",
+            "description": "",
+            "properties": {},
+            "display": {
+              "x": 228,
+              "y": 396
+            },
+            "children": [
+              "4cfaf27e-dfab-4a4d-85eb-e6fe6d66fc50",
+              "25305166-3936-4270-8d0f-3dd99e2986ed",
+              "a64f52c1-385d-4381-9c51-3b3c9509648f",
+              "970dce20-6cff-4515-8a3c-a969c13ca984",
+              "fd916444-28dc-4448-9039-1b6f009ee8aa",
+              "db67a446-51ef-4d61-8e3a-b214a34b691f",
+              "0acaa9c4-384b-478e-be04-556351cca31c"
+            ]
+          },
+          "7656895d-d268-4252-81bc-e0cd013add4b": {
+            "id": "7656895d-d268-4252-81bc-e0cd013add4b",
+            "name": "Priority",
+            "category": "composite",
+            "title": "Priority",
+            "description": "",
+            "properties": {},
+            "display": {
+              "x": 96,
+              "y": 216
+            },
+            "children": [
+              "197a07a2-1444-4088-8dd9-509d5208c6e8",
+              "42f24b36-88a5-4c20-b8c7-0579145cb71c"
+            ]
+          },
+          "f54a5051-b8ba-4296-958b-99f0da7f5c0f": {
+            "id": "f54a5051-b8ba-4296-958b-99f0da7f5c0f",
+            "name": "Wait",
+            "category": "action",
+            "title": "Wait0-1 <milliseconds>ms",
+            "description": "",
+            "properties": {
+              "milliseconds": 1000
+            },
+            "display": {
+              "x": 468,
+              "y": 60
+            }
+          },
+          "a64f52c1-385d-4381-9c51-3b3c9509648f": {
+            "id": "a64f52c1-385d-4381-9c51-3b3c9509648f",
+            "name": "Wait",
+            "category": "action",
+            "title": "Wait1-1 <milliseconds>ms",
+            "description": "",
+            "properties": {
+              "milliseconds": 1000
+            },
+            "display": {
+              "x": 456,
+              "y": 396
+            }
+          },
+          "93c25ee3-7dda-41e6-92a0-a9c2302c6d91": {
+            "id": "93c25ee3-7dda-41e6-92a0-a9c2302c6d91",
+            "name": "SetValue",
+            "category": "action",
+            "title": "SetValue(<key>,<value>)1",
+            "description": "",
+            "properties": {
+              "key": "job",
+              "value": 1
+            },
+            "display": {
+              "x": 468,
+              "y": 144
+            }
+          },
+          "fd916444-28dc-4448-9039-1b6f009ee8aa": {
+            "id": "fd916444-28dc-4448-9039-1b6f009ee8aa",
+            "name": "SetValue",
+            "category": "action",
+            "title": "SetValue(<key>,<value>)2",
+            "description": "",
+            "properties": {
+              "key": "job",
+              "value": 0
+            },
+            "display": {
+              "x": 456,
+              "y": 492
+            }
+          },
+          "9fbbec3b-3f57-4fa9-8800-021859a5baf1": {
+            "id": "9fbbec3b-3f57-4fa9-8800-021859a5baf1",
+            "name": "IsValue",
+            "category": "condition",
+            "title": "IsValue(<key>,<value>)1",
+            "description": "",
+            "properties": {
+              "key": "job",
+              "value": 0
+            },
+            "display": {
+              "x": 468,
+              "y": -36
+            }
+          },
+          "4cfaf27e-dfab-4a4d-85eb-e6fe6d66fc50": {
+            "id": "4cfaf27e-dfab-4a4d-85eb-e6fe6d66fc50",
+            "name": "IsValue",
+            "category": "condition",
+            "title": "IsValue(<key>,<value>)2",
+            "description": "",
+            "properties": {
+              "key": "job",
+              "value": 1
+            },
+            "display": {
+              "x": 456,
+              "y": 300
+            }
+          },
+          "866d2e78-120e-446e-8e87-3dfc93eed895": {
+            "id": "866d2e78-120e-446e-8e87-3dfc93eed895",
+            "name": "Log",
+            "category": "action",
+            "title": "Log(<info>)",
+            "description": "",
+            "properties": {
+              "info": "job 0-0"
+            },
+            "display": {
+              "x": 468,
+              "y": 12
+            }
+          },
+          "5dad8fe4-3d34-4a75-a82e-ac4aa3a33c3f": {
+            "id": "5dad8fe4-3d34-4a75-a82e-ac4aa3a33c3f",
+            "name": "Log",
+            "category": "action",
+            "title": "Log(<info>)",
+            "description": "",
+            "properties": {
+              "info": "job 0-1"
+            },
+            "display": {
+              "x": 468,
+              "y": 96
+            }
+          },
+          "819cd7d8-eed8-4294-bacd-e6cdfe04fcbc": {
+            "id": "819cd7d8-eed8-4294-bacd-e6cdfe04fcbc",
+            "name": "Log",
+            "category": "action",
+            "title": "Log(<info>)",
+            "description": "",
+            "properties": {
+              "info": "job 0-2"
+            },
+            "display": {
+              "x": 468,
+              "y": 192
+            }
+          },
+          "25305166-3936-4270-8d0f-3dd99e2986ed": {
+            "id": "25305166-3936-4270-8d0f-3dd99e2986ed",
+            "name": "Log",
+            "category": "action",
+            "title": "Log(<info>)",
+            "description": "",
+            "properties": {
+              "info": "job 1-0"
+            },
+            "display": {
+              "x": 456,
+              "y": 348
+            }
+          },
+          "970dce20-6cff-4515-8a3c-a969c13ca984": {
+            "id": "970dce20-6cff-4515-8a3c-a969c13ca984",
+            "name": "Log",
+            "category": "action",
+            "title": "Log(<info>)",
+            "description": "",
+            "properties": {
+              "info": "job 1-1"
+            },
+            "display": {
+              "x": 456,
+              "y": 444
+            }
+          },
+          "db67a446-51ef-4d61-8e3a-b214a34b691f": {
+            "id": "db67a446-51ef-4d61-8e3a-b214a34b691f",
+            "name": "Log",
+            "category": "action",
+            "title": "Log(<info>)",
+            "description": "",
+            "properties": {
+              "info": "job 1-2"
+            },
+            "display": {
+              "x": 456,
+              "y": 540
+            }
+          },
+          "17c2e7c4-d571-4772-8e8b-79045a9125d3": {
+            "id": "17c2e7c4-d571-4772-8e8b-79045a9125d3",
+            "name": "Wait",
+            "category": "action",
+            "title": "Wait0-2 <milliseconds>ms",
+            "description": "",
+            "properties": {
+              "milliseconds": 100
+            },
+            "display": {
+              "x": 468,
+              "y": 240
+            }
+          },
+          "0acaa9c4-384b-478e-be04-556351cca31c": {
+            "id": "0acaa9c4-384b-478e-be04-556351cca31c",
+            "name": "Wait",
+            "category": "action",
+            "title": "Wait1-2 <milliseconds>ms",
+            "description": "",
+            "properties": {
+              "milliseconds": 100
+            },
+            "display": {
+              "x": 456,
+              "y": 588
+            }
+          }
+        },
+        "display": {
+          "camera_x": 540,
+          "camera_y": 306.5,
+          "camera_z": 1,
+          "x": -12,
+          "y": 216
+        }
+      }
+    ],
+    "custom_nodes": [
+      {
+        "version": "0.3.0",
+        "scope": "node",
+        "name": "SetValue",
+        "category": "action",
+        "title": "SetValue(<key>,<value>)",
+        "description": null,
+        "properties": {
+          "key": "string",
+          "value": 1
+        },
+        "parent": null
+      },
+      {
+        "version": "0.3.0",
+        "scope": "node",
+        "name": "IsValue",
+        "category": "condition",
+        "title": "IsValue(<key>,<value>)",
+        "description": null,
+        "properties": {
+          "key": "string",
+          "value": 1
+        },
+        "parent": null
+      },
+      {
+        "version": "0.3.0",
+        "scope": "node",
+        "name": "Log",
+        "category": "action",
+        "title": "Log(<info>)",
+        "description": null,
+        "properties": {
+          "info": "string"
+        },
+        "parent": null
+      }
+    ],
+    "custom_folders": []
+  },
+  "path": "E:\\mgame\\server\\mgameserver.git\\src\\lib\\behavior3go\\examples\\testwork\\testwork.b3"
+}
